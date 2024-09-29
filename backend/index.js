@@ -11,6 +11,20 @@ app.get("/",(req, res)=>{
     return res.send("Welcome default")
 });
 
+app.get("/books",async (req,res)=>{
+    try {
+        const books = await Book.find({});
+
+        return res.status(200).json({
+            count: books.length,
+            data: books
+        });   
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).send({message: error.message});
+    }
+})
+
 app.post("/books",async (req,res)=>{
     try {
         if(!req.body.title || !req.body.author || !req.body.publishYear){
