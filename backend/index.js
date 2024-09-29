@@ -32,7 +32,7 @@ app.get("/books/:id",async (req,res)=>{
         const {id} = req.params;
         const book = await Book.findById(id);
 
-        return res.status(200).send(book);
+        return res.status(200).json(book);
     } catch (error) {
         console.log(error.message);
         return res.status(500).send({message: error.message});
