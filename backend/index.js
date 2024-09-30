@@ -39,6 +39,23 @@ app.get("/books/:id",async (req,res)=>{
     }
 });
 
+// Route to delete a book
+app.delete("/books/:id",async (req,res)=>{
+    try {
+        const {id} = req.params;
+
+        const result = await Book.findByIdAndDelete(id);
+        if(!result){
+            return res.status(404).json({message: "Book not found"});
+        }
+
+        return res.status(200).send({message: "Book deleted successfully"});
+    } catch (error) {
+        console.log(error.message);
+        return res.status(500).json({message: error.message});
+    }
+});
+
 // Route to create book in books-collection Database
 app.post("/books",async (req,res)=>{
     try {
