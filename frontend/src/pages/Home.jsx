@@ -23,7 +23,7 @@ const Home = () => {
             });
     },[]);
   return (
-    <div className="p-4 ">
+    <div className="p-4">
         <div className="flex justify-between items-center">
             <h1 className="text-3xl my-8">Books List</h1>
             <Link to="/books/create">
@@ -58,7 +58,7 @@ const Home = () => {
                             <td className="border border-slate-700 rounded-md text-center max-md:hidden">
                                 {book.publishYear}
                             </td>
-                            <td className="border border-slate-700 rounded-md text-center max-md:hidden">
+                            <td className="border border-slate-700 rounded-md text-center">
                                 <div className="flex justify-center gap-x-4">
                                     <Link to={`/books/details/${book._id}`}>
                                         <BsInfoCircle className="text-2xl text-green-800"/>
